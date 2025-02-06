@@ -41,6 +41,10 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt.token_blacklist', 
 ]
 
+INSTALLED_APPS += [
+    'account',
+]
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -123,9 +127,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'proj.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
+AUTH_USER_MODEL = 'account.Account'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
