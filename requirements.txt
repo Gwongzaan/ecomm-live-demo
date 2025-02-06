@@ -1,0 +1,10 @@
+Django
+markdown
+django-filter
+djangorestframework
+drf-spectacular
+python-json-logger
+djangorestframework-simplejwt
+django-countries
+psycopg2-binary
+gunicorn

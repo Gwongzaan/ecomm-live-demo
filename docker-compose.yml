@@ -1,0 +1,64 @@
+services:
+  # PostgreSQL Database Service
+  db:
+    image: postgres:16
+    env_file:
+      - ${CONF}/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./${DB_CONF}/postgresql_init.sql:/docker-entrypoint-initdb.d/postgresql_init.sql
+      - ./${DB_CONF}/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./${DB_CONF}/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  # Django Service
+  django:
+    #    restart: unless-stopped
+    restart: no
+    build:
+      context: .
+      dockerfile: ${WEB_CONF}/Dockerfile
+    entrypoint: ${APP_CONF}/web/server-entrypoint.sh
+    volumes:
+      - static_volume:${APP_STATIC}
+      - log_volume:${APP_LOGS}:rw
+      - media_volume:${APP_MEDIA}
+    expose:
+      - 8000
+    env_file:
+      - ${CONF}/.env
+    depends_on:
+      - db
+    networks:
+      - backend
+      - frontend
+
+  # Nginx services
+  nginx:
+    restart: always
+    image: nginx:1.27-alpine3.20-slim
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./${NGINX_CONF}:/etc/nginx/conf.d/default.conf
+      - ${CERTS}:/etc/nginx/certs
+      - static_volume:${APP_STATIC}
+      - media_volume:${APP_MEDIA}
+    depends_on:
+      - django
+    networks:
+      - frontend
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  static_volume: {}
+  log_volume: {}
+  postgres_data: {}
+  media_volume: {}
