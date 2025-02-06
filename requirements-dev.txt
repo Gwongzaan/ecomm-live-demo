@@ -1,0 +1,12 @@
+Django
+markdown
+django-filter
+djangorestframework
+django-debug-toolbar
+drf-spectacular
+python-json-logger
+djangorestframework-simplejwt
+django-extensions
+pygraphviz
+django-countries
+Faker
