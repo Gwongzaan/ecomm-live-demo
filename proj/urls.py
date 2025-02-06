@@ -26,6 +26,10 @@ urlpatterns = [
     ])),
 ]
 
+urlpatterns += [
+    path('v1/', include(('api_v1.urls', 'api_v1'), namespace='v1')),
+]
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [
