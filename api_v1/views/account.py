@@ -27,3 +27,7 @@ class CustomerRegisterView(APIView):
         User.objects.create_member(username=username, password=password, email=email)
 
         return Response({"message": 'User registered successfully'}, status=status.HTTP_201_CREATED)
+
+@extend_schema_view(post=login_customer_schema)
+class LoginTokenObtainPairView(TokenObtainPairView):
+    permission_classes = [AllowAny, ]

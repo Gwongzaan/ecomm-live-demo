@@ -4,5 +4,6 @@ from api_v1.views import account
 urlpatterns = [
     path('auth/', include([
         path('register/', account.CustomerRegisterView.as_view(), name='register'), 
+        path('login/', account.LoginTokenObtainPairView.as_view(), name='login'),
     ])), 
 ]
