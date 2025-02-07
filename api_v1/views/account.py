@@ -3,12 +3,12 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
-from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from django.contrib.auth import get_user_model
 
 from drf_spectacular.utils import extend_schema_view
-from api_v1.docs.account import customer_register_schema, login_customer_schema
+from api_v1.docs import customer_register_schema, login_customer_schema, refresh_token_schema
 
 User = get_user_model()
 
@@ -31,3 +31,9 @@ class CustomerRegisterView(APIView):
 @extend_schema_view(post=login_customer_schema)
 class LoginTokenObtainPairView(TokenObtainPairView):
     permission_classes = [AllowAny, ]
+
+
+@extend_schema_view(post=refresh_token_schema)
+class RefreshTokenView(TokenRefreshView):
+    permission_classes = [AllowAny, ]
+
