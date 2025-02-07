@@ -6,5 +6,6 @@ urlpatterns = [
         path('register/', account.CustomerRegisterView.as_view(), name='register'), 
         path('login/', account.LoginTokenObtainPairView.as_view(), name='login'),
         path('refresh/', account.RefreshTokenView.as_view(), name='refresh-token'),
+        path('logout/', account.LogoutCustomerView.as_view(), name='logout'),
     ])), 
 ]
