@@ -78,6 +78,8 @@ SPECTACULAR_SETTINGS = {
     # ],
     "TITLE": "API Live Demo",
     "DESCRIPTION": (
+        "GitHub: https://github.com/Gwongzaan/ecomm-live-demo.git"
+        "<br>"
         "Detailed API documentation for Ecommerce Website live demo, Url:https://api.sixdigit.net/v1/specification/"
         "<br>"
         "Continously adding new features."
