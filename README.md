@@ -1,6 +1,6 @@
 # Django live-demo
 
-A live demo of ecommerce system for landing a position of junior Django Developer
+A live demo of ecommerce system
 
 Base Endpoint: https://api.sixdigit.net/v1/
 
