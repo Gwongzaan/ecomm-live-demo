@@ -18,6 +18,20 @@
             "autoStartBrowser": false,
             "program": "${workspaceFolder}/manage.py",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Debug Django Test",
+            "type": "debugpy",
+            "django": true,
+            "justMyCode": true,
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "args": [
+                "test",
+                "--keepdb", 
+                "api_v1.tests.test_v1_customer_profile"
+            ],
+            "console": "integratedTerminal"
         }
     ]
 }
