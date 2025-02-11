@@ -1,5 +1,19 @@
 # Database Design in a Modular and maintainable Approach
 
+## tools
+
+- graphviz online
+- https://django-extensions.readthedocs.io/en/latest/graph_models.html
+
+```shell
+sudo apt-get install python-dev-is-python3
+sudo apt-get instal graphviz libgraphviz-dev graphviz-dev
+pip install pygraphviz
+
+
+python manage.py graph_models apps_list > er.dot
+```
+
 [top-level ER diagram](./top-level-er.svg)
 
 [Account, Address](../account/models.py)
