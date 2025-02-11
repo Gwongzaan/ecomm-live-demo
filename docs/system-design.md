@@ -51,7 +51,6 @@ key requirements.
 | `/v1/auth/register/`      | `POST` | Register a new member customer           |
 | `/v1/auth/login/`         | `POST` | Login member customer & return JWT token |
 | `/v1/auth/logout/`        | `POST` | Logout member customer                   |
-| `/v1/auth/token/`         | `POST` | Get access & refresh JWT token           |
 | `/v1/auth/token/refresh/` | `POST` | Refresh JWT token                        |
 
 ---

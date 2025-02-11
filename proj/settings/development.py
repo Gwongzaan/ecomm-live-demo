@@ -18,6 +18,7 @@ if ENABLE_DEBUG_TOOLBAR:
 
 INSTALLED_APPS += [
     'django_extensions',
+    'db_layout',
 ]
 
 DEBUG_TOOLBAR_PANELS = [
