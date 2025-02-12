@@ -2,6 +2,7 @@ from rest_framework import serializers
 from drf_spectacular.utils import extend_schema
 from drf_spectacular.utils import OpenApiResponse, OpenApiExample
 from api_v1.serializers.customer import CustomerProfileSerializer
+from account.models import ADDRESS_TYPE
 from faker import Faker
 
 fake = Faker()
@@ -34,13 +35,45 @@ customer_profile_schema = extend_schema(
                         "customer profile data"
                         ),
                     value={
-                        "customer": {
-                            "username": fake.user_name(), 
-                            "first_name": fake.first_name(), 
-                            "last_name": fake.last_name(), 
-                            "email": fake.email(),    
+                        'customer': {
+                            'addresses': [
+                                {
+                                    'address_type': ADDRESS_TYPE.BILLING,
+                                    'street_address': fake.street_address(), 
+                                    'apartment': fake.building_number(), 
+                                    'city': fake.city(), 
+                                    'state': fake.state(), 
+                                    'postal_code': fake.postalcode(), 
+                                    'country': fake.country(), 
+                                    'is_default': False
+                                },  
+                                {
+                                    'address_type': ADDRESS_TYPE.SHIPPING, 
+                                    'street_address': fake.street_address(), 
+                                    'apartment': fake.building_number(), 
+                                    'city': fake.city(), 
+                                    'state': fake.state(), 
+                                    'postal_code': fake.postalcode(), 
+                                    'country': fake.country(), 
+                                    'is_default': False
+                                },  
+                                {
+                                    'address_type': ADDRESS_TYPE.BOTH, 
+                                    'street_address': fake.street_address(), 
+                                    'apartment': fake.building_number(), 
+                                    'city': fake.city(), 
+                                    'state': fake.state(), 
+                                    'postal_code': fake.postalcode(), 
+                                    'country': fake.country(), 
+                                    'is_default': False
+                                },  
+                            ],
+                            'username': fake.user_name(), 
+                            'first_name': fake.first_name(), 
+                            'last_name': fake.last_name(), 
+                            'email': fake.email(),
                         },
-                        "profile_picture_url": fake.image_url(), 
+                        'profile_picture_url': fake.image_url(),
                     }
                 )
             ]

@@ -37,7 +37,7 @@
             "args": [
                 "test",
                 "--keepdb", 
-                "api_v1.tests.test_v1_account_serializer"
+                "api_v1.tests.test_v1_customer_profile"
             ],
             "console": "integratedTerminal"
         }
